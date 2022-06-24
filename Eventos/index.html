@@ -27,29 +27,35 @@
     <div class="container">
         <div class="cardGrid noCopy">
 <!-----------------------------FORM-------------------------------->
-            <div class="row"> 
-                <div class="form-group">
-                    <span class="col-md-6 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                    <form id="formulario" class="p-5 mt-3 shadow border">
-                        <div class="col-md-12">
-                            <input id="nombre"  type="text" placeholder="Nombre " class="form-control"> <br>
-                    
-                            <input id="monto" type="number" placeholder=" Monto " class="form-control"> <br>
-                        
-                            <input id="plazo"  type="number" placeholder="Plazo " class="form-control"> <br>
-
-                            <p>
-                                <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
-                                <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
-                                <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
-                            </p>
-                            <!--  <input id="tipo" type="text" placeholder=" Tipo de Prestamo " class="form-control"><br>  -->
-                            
-                            <input id="btn" type="submit" value="Simular Prestamo" />
-                        </div> <br>
-                    </form>
-                </div><br> 
-            </div>
+<div class="row"> 
+    <div class="form-group">
+        <span class="col-md-6 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+        <form id="formulario" class="p-5 mt-3 shadow border">
+            <div class="col-md-12">
+                <input id="nombre"  type="text" placeholder="Nombre " class="form-control"> <br>
+        
+                <input id="monto" type="number" placeholder=" Monto " class="form-control"> <br>
+                <select id="plazo" name="plazo" class="form-control"> 
+                <script type="text/javascript"> 
+                    document.write("<option>" + "Seleccione Plazo" + "</option>" );
+                    document.write("<option>" + 3 + "</option>" );
+                    document.write("<option>" + 6 + "</option>" );
+                    document.write("<option>" + 12 + "</option>" );
+                    document.write("<option>" + 24 + "</option>" );
+                    document.write("<option>" + 36 + "</option>" );
+                </script>   
+                </select>  <br>
+                
+                    <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
+                    <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
+                    <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
+                </p>
+                
+                <input id="btn" type="submit" value="Simular Prestamo" />
+            </div> <br>
+        </form>
+    </div><br> 
+</div>
 <!------------------------------------------------------------>
         </form> <br>
             <h3 id="listado"> Listado:</h3>
