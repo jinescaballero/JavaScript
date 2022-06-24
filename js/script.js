@@ -8,6 +8,10 @@ const formulario = document.querySelector("#formulario");
 //funciones
 function calcularCuota(meses,monto) {
     switch (true){
+        case meses==3: 
+        return Math.round( monto * 1.15 /3);
+        // return prestamo.cuota //cuota :  20166  total 121.194  21%
+        break  
         case meses==6: 
             return Math.round( monto * 1.21 /6);
             // return prestamo.cuota //cuota :  20166  total 121.194  21%
@@ -67,10 +71,18 @@ class PrestamoClass {
 }
 
 const prestamo = new PrestamoClass();
-
-console.log(titulo.innerHTML);
+//accediendo al DOM por ID
+console.log(titulo.innerHTML); //queda como un unico elemento
 titulo.innerHTML="Detalle del Prestamo";
 
+
+//accediendo al DOM por Clase
+const cards = document.getElementsByClassName('itemCard'); 
+//recorro el array de cards
+for (const card of cards) {
+    console.log(card);
+    //producto.innerHTML('Hola'); //esto queda como un array de 3 hola
+}
 //option button --------------------------------------
 
 function validarButton(){

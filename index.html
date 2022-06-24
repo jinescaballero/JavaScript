@@ -35,10 +35,24 @@
                             <input id="nombre"  type="text" placeholder="Nombre " class="form-control"> <br>
                     
                             <input id="monto" type="number" placeholder=" Monto " class="form-control"> <br>
+                            <select id="plazo" name="plazo" class="form-control"> 
+                            <script type="text/javascript"> 
+                                document.write("<option>" + "Seleccione Plazo" + "</option>" );
+                                document.write("<option>" + 3 + "</option>" );
+                                document.write("<option>" + 6 + "</option>" );
+                                document.write("<option>" + 12 + "</option>" );
+                                document.write("<option>" + 24 + "</option>" );
+                                document.write("<option>" + 36 + "</option>" );
+                            </script>   
+                            </select>  <br>
                         
-                            <input id="plazo"  type="number" placeholder="Plazo " class="form-control"> <br>
 
-                            <p>
+
+                            <!-- <input id="plazo"  type="number" placeholder="Plazo " class="form-control"> <br>-->
+
+
+
+                            
                                 <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
                                 <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
                                 <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
@@ -53,27 +67,25 @@
 <!------------------------------------------------------------>
         </form> <br>
             <h3 id="listado"> Listado:</h3>
-
-
-            <div class="col-1 col-lg-6">
-                <article class="itemCard ">
-                    <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-7.png"></div>
-                    <h3>Préstamo&nbsp;Personal</h3>
-                    <p><strong>Préstamos hasta $2.000.000. </strong><br> <br>
-                    Simulá el tuyo en Online Banking y si te interesa, pedilo 100% online.&nbsp;</p>
-                    <a href="./prestamo.html" aria-label="Conocer más sobre préstamos personales" class="btn btn-outline">Conocer&nbsp;más</a>
-                </article>
-            </div> 
-            <div class="col-1 col-md-6 col-lg-6">
-                <article class="itemCard">
-                    <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-8.png"></div>
-                    <h3>Adelanto de sueldo</h3>
-                    <p>¿Te surgió un gasto inesperado para pagar? ¿Necesitás un poco de plata y te faltan varios días para cobrar?<br><br>
-                    <strong>Te prestamos hasta el 50% de tu sueldo. </strong></p>
-                    <a href="./prestamo.html" aria-label="Conocer más sobre adelanto de sueldo" class="btn btn-outline">Conocer&nbsp;más</a>
-                </article>
-            </div>   
             <div class="row">
+                <div class="col-1 col-lg-6">
+                    <article class="itemCard ">
+                        <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-7.png"></div>
+                        <h3>Préstamo&nbsp;Personal</h3>
+                        <p><strong>Préstamos hasta $2.000.000. </strong><br> <br>
+                        Simulá el tuyo en Online Banking y si te interesa, pedilo 100% online.&nbsp;</p>
+                        <a href="./prestamo.html" aria-label="Conocer más sobre préstamos personales" class="btn btn-outline">Conocer&nbsp;más</a>
+                    </article>
+                </div> 
+                <div class="col-1 col-md-6 col-lg-6">
+                    <article class="itemCard">
+                        <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-8.png"></div>
+                        <h3>Adelanto de sueldo</h3>
+                        <p>¿Te surgió un gasto inesperado para pagar? ¿Necesitás un poco de plata y te faltan varios días para cobrar?<br><br>
+                        <strong>Te prestamos hasta el 50% de tu sueldo. </strong></p>
+                        <a href="./prestamo.html" aria-label="Conocer más sobre adelanto de sueldo" class="btn btn-outline">Conocer&nbsp;más</a>
+                    </article>
+                </div>   
                 <div class="col-1 col-md-6 col-lg-6">
                     <article class="itemCard">
                         <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-9.png"></div>

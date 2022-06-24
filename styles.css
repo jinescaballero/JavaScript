@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "StyleScript";
+    src: url('./font/StyleScript-Regular.ttf');
+}
+@font-face {
+    font-family: "VarelaRound";
+    src: url('./font/VarelaRound-Regular.ttf');
+}
+
+
+
+
+#titulo {
+    font-family: Poppins;
+    padding-top:1%;
+    padding-bottom:1%;
+    font-size: 250%;
+    color:rgb(35, 23, 48);
+    background:#cbccf5;
+    margin-bottom:1.5%;
+    line-height:90% !important;
+    text-align: center;
+    border: 2px solid  #dcdce1;
+}
+
