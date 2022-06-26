@@ -7,20 +7,7 @@
     src: url('./font/VarelaRound-Regular.ttf');
 }
 
-/*
-$border_color: #b6f8f4;
-$estilos: (
-    font_color: black ,
-    site_color: #e2fdf4,
-    lila_color: rgb(203, 147, 255),
-    gray_color: rgb(141, 138, 138),
-    font_instrucciones: ('Raleway', sans-serif),
-    border:  2px solid $border_color
-);
-$gradient-testght: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 70%, #dbfbde 100%);
-$gradient-right: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 70%, #e2fdf4 100%);
 
-*/
 
 
 #titulo {
@@ -35,3 +22,21 @@ $gradient-right: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255
     text-align: center;
     border: 2px solid  #dcdce1;
 }
+
+
+.itemCard .icoBox img {
+    width: 75px;
+    height: 75px;
+    padding: 5px;
+    border-radius: 50%;
+    background: #f2f2f2;
+}
+
+@media (min-width: 992px){
+.col-lg-6 {
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin: 0 auto;
+}
+}
+
