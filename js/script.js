@@ -1,7 +1,6 @@
 //objetivos:
 /*Utilizar DOM para modificar datos en el index
 Utilizar evetos*/
-
 const formulario = document.querySelector("#formulario");
 
 
@@ -39,8 +38,9 @@ function validarFormulario(e){
     let plazo = document.querySelector("#plazo").value;
     const listado = document.getElementById("listado");
     cargarDatos(prestamo);
-    listado.textContent =  `Perfecto ${nombre} ! Elegiste Prestamo ${prestamo.tipo} por $${monto}, ${prestamo.plazo} cuotas de  $${prestamo.cuota}. 
+    listado.textContent =  `${bienvenida} ! Elegiste Prestamo ${prestamo.tipo} por $${monto}, ${prestamo.plazo} cuotas de  $${prestamo.cuota}. 
     Total a devolver. $${prestamo.total}` ;
+    localStorage.setItem('bienvenida',`Bienvenida ${prestamo.nombre}`); 
 
 }   
 
@@ -82,6 +82,8 @@ const cards = document.getElementsByClassName('itemCard');
 for (const card of cards) {
     console.log(card);
     //producto.innerHTML('Hola'); //esto queda como un array de 3 hola
+
+
 }
 //option button --------------------------------------
 
@@ -104,7 +106,7 @@ function setRadio(name, value) {
 
 //---------------------------------------------
 
+
 formulario.addEventListener("submit", validarFormulario);
-
-
-
+const bienvenida = localStorage.getItem('bienvenida');
+listado.innerHTML = bienvenida;
