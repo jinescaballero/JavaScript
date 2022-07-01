@@ -33,25 +33,29 @@ function calcularCuota(meses,monto) {
 }
 function validarFormulario(e){
     e.preventDefault();
-    let nombre = document.querySelector("#nombre").value;
-    let monto = document.querySelector("#monto").value;
-    let plazo = document.querySelector("#plazo").value;
+    prestamo.nombre = document.querySelector("#nombre").value;
+    prestamo.monto = document.querySelector("#monto").value;
+    prestamo.plazo = document.querySelector("#plazo").value;
+    prestamo.cuota = calcularCuota(prestamo.plazo, prestamo.monto);
+    prestamo.total= prestamo.cuota * prestamo.plazo;
     const listado = document.getElementById("listado");
     cargarDatos(prestamo);
-    listado.textContent =  `${bienvenida} ! Elegiste Prestamo ${prestamo.tipo} por $${monto}, ${prestamo.plazo} cuotas de  $${prestamo.cuota}. 
-    Total a devolver. $${prestamo.total}` ;
-    localStorage.setItem('bienvenida',`Bienvenida ${prestamo.nombre}`); 
 
 }   
 
 
 function cargarDatos(prestamo){
-    prestamo.nombre = document.querySelector("#nombre").value;
+    /*prestamo.nombre = document.querySelector("#nombre").value;
     prestamo.monto = document.querySelector("#monto").value;
-    prestamo.plazo = document.querySelector("#plazo").value;
+    prestamo.plazo = document.querySelector("#plazo").value;-*/
     prestamo.tipo = validarButton();
-    prestamo.cuota = calcularCuota(prestamo.plazo, prestamo.monto);
-    prestamo.total= prestamo.cuota * prestamo.plazo;
+    localStorage.setItem('bienvenida',`Bienvenid@ ${prestamo.nombre}!`);
+    const bienvenida = localStorage.getItem('bienvenida');
+    if (isNaN(prestamo.nombre)){
+        listado.textContent =  `${bienvenida} Elegiste Prestamo ${prestamo.tipo} por $${prestamo.monto}, ${prestamo.plazo} cuotas de  $${prestamo.cuota}. 
+        Total a devolver. $${prestamo.total}`;
+    } 
+    
     console.log(prestamo);
 
 }   
@@ -108,5 +112,5 @@ function setRadio(name, value) {
 
 
 formulario.addEventListener("submit", validarFormulario);
-const bienvenida = localStorage.getItem('bienvenida');
+const bienvenida = localStorage.getItem('Bienvenid@');
 listado.innerHTML = bienvenida;
