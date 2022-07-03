@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=dev"ice-width, initial-scale=1.0">
+    <meta name="viewport" content="width=dev"ice-width, initial-scale="1.0">
     <!-- Bootstrap-->
     <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
 
@@ -31,27 +31,45 @@
                 <div class="form-group">
                     <span class="col-md-6 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                     <form id="formulario" class="p-5 mt-3 shadow border">
-                        <div class="col-md-12">
-                            <input id="nombre"  type="text" placeholder="Nombre " class="form-control"> <br>
-                    
-                            <input id="monto" type="number" placeholder=" Monto " class="form-control"> <br>
-                            <select id="plazo" name="plazo" class="form-control"> 
-                            <script type="text/javascript"> 
-                                document.write("<option>" + "Seleccione Plazo" + "</option>" );
-                                document.write("<option>" + 3 + "</option>" );
-                                document.write("<option>" + 6 + "</option>" );
-                                document.write("<option>" + 12 + "</option>" );
-                                document.write("<option>" + 24 + "</option>" );
-                                document.write("<option>" + 36 + "</option>" );
-                            </script>   
+                        <div class="col-md-12 ">
+                            <div   name="nombre" type="text" >
+                                <input id="nombre" class="form-control"  placeholder="Nombre " > 
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                <p class="form-control-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p> <br>                            
+                            </div>
+                            <div   name="monto" type="number" >
+                                <input id="monto" class="form-control"  placeholder=" Monto " > 
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i> <br>
+                            </div>
+                            
+                            <select id="plazo" type="number" name="plazo" placeholder="Plazo "class="form-control"> 
+                                <script type="text/javascript"> 
+                                    document.write("<option>" + "Seleccione Plazo" + "</option>" );
+                                    document.write("<option>" + 3 + "</option>" );
+                                    document.write("<option>" + 6 + "</option>" );
+                                    document.write("<option>" + 12 + "</option>" );
+                                    document.write("<option>" + 24 + "</option>" );
+                                    document.write("<option>" + 36 + "</option>" );
+                                </script>   
                             </select>  <br>
+                            <div  name="email"  type="text" >
+                                <input  id="email" class="form-control" placeholder="Email:John@correo.com " > 
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i> <br>
+                            </div>
+                            <p class="form-control-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                            <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
+                            <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
+                            <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
+                            </p> 
                             
-                                <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
-                                <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
-                                <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
-                            </p>
-                            
-                            <input id="btn" type="submit" value="Simular Prestamo" />
+                            <!--<input id="btn" type="submit" value="Simular Prestamo" --->
+                            <div class="formulario__mensaje" id="formulario__mensaje">
+                                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                            </div> <br>
+                            <div class="form-control-btn-enviar">
+                                <button id="btn" type="submit" class="formulario__btn">Simular Prestamo</button>
+                                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+                            </div>
                         </div> <br>
                     </form>
                 </div><br> 
@@ -100,6 +118,6 @@
 
 
     <script src="./js/script.js"></script>
-
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 </html>
