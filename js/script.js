@@ -102,46 +102,41 @@ function calcularCuota(meses,monto) {
 }
 }
 
+function unMes(fecha,cuota){
+    this.fecha=fecha;
+    this.cuota   = cuota;
+}
+
 
 function cargarDatos(prestamo){
     let fecha;
-    let cuota;
-    let mes = {fecha,cuota};
     let mesesarray=[];
     let DateTime = luxon.DateTime;
     const dt = DateTime.now();
-    console.log(dt.toISODate(DateTime.DATETIME_SHORT)); //=> '2022-07-07')
+    let fecha_parseada;
+
 
     prestamo.tipo = validarButton();
     if (isNaN(prestamo.nombre)&& (prestamo.monto>0) && (prestamo.plazo>0) && isNaN(prestamo.email) && isNaN(prestamo.tipo)){
         localStorage.setItem('bienvenida',`Bienvenid@ ${prestamo.nombre}!`);
         const bienvenida = localStorage.getItem('bienvenida');
-        listado.textContent =  `${bienvenida} Elegiste Prestamo ${prestamo.tipo} por $${prestamo.monto}, ${prestamo.plazo} cuotas de  $${prestamo.cuota}. 
+        listado.textContent =  `${bienvenida} Elegiste Prestamo ${prestamo.tipo} por $${prestamo.monto}. El plazo para devolver es: ${prestamo.plazo}. 
         Total a devolver. $${prestamo.total}`;
+        let fechas = document.getElementById("fechas");
 
-        const fechas = document.getElementById("fechas");
-        let meses= {month: 1};
-        
-        let suma = dt.plus(meses); 
-        console.log(suma.toISODate(DateTime.DATETIME_SHORT));
-        
-        for (let i = 1; i < prestamo.plazo; i++) {
+        for (let i = 1; i <= prestamo.plazo; i++) {
             meses= {month: i};
-            //console.log(`se vienen meses month:i-meses-`)
-            //console.log(meses);
-            //console.log(`se viene dt.plus(meses):-fecha-`)
-            fecha=dt.plus(meses);
-            //console.log(fecha);
-            //console.log(`viene mes.fecha`)
-            mes.fecha= fecha.toISODate(DateTime.DATETIME_SHORT);
-            mes.cuota=prestamo.cuota;
-            //console.log(mes.fecha);
-            //console.log(`se viene mes`);
-            //console.log(mes);
+            let suma = dt.plus(meses); 
+            fecha_parseada= suma.toISODate(DateTime.DATETIME_SHORT);
+            cuota=prestamo.cuota;
+            let mes = new unMes(fecha_parseada, cuota);
+            console.log(mes);
             mesesarray.push(mes);
-            console.log (`Fecha: ${mesesarray[i]} `);
         } 
-        fechas.textContent =  ` ${mesesarray}`;
+        //console.log (`Fecha: ${mesesarray} `);
+        
+
+        fechas.textContent =  `Primer cuota vence: ${mesesarray[0].fecha}  Valor cuota: $${mesesarray[0].cuota}`; 
 
         document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
         setTimeout(() => {
@@ -204,40 +199,3 @@ logout.onclick = () => {
 console.log(prestamo);
 
 //==============librerai Luxon ============
-
-
-
-
-//console.log( dt.toLocaleString(DateTime.DATETIME_SHORT) );
-
-//let DateTime = luxon.DateTime;
-//const dt = DateTime.now();
-//console.log (dt);
-//console.log(dt.toISODate(DateTime.DATETIME_SHORT)); //=> '2022-07-07')
-//let fecha = dt.toISODate(DateTime.DATETIME_SHORT);
-
-//console.log(dt.localeString(DateTime));
-
-
-// 25/1/2022 14:21
-/*
-const ejercicio = {hours: 1, minutes: 15};
-const estudio = {hours: 2, minutes: 30};
-
-console.log()
-
-const suma = dt.plus(ejercicio).plus(estudio);
-
-console.log(suma.toLocaleString(DateTime.DATETIME_SHORT));
-
-console.log(suma.hour - dt.hour);
-console.log(suma.minute - dt.minute);
-
-if (dt.hour < 12) {
-  console.log('Buenos dÃ­as');
-} else if (dt.hour > 12 && dt.hour < 19) {
-  console.log('Buenas tardes');
-} else {
-  console.log('Buenas noches');
-}
-*/
