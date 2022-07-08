@@ -2,11 +2,13 @@
 const formulario = document.querySelector("#formulario");
 const inputs = document.querySelectorAll('#formulario input');
 
+
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	monto: /^\d{4,7}$/ // 4 a 7 numeros.
 }
+
 
 const validarFormulario = (e) => {
     prestamo.nombre = document.querySelector("#nombre").value;
@@ -69,7 +71,7 @@ formulario.addEventListener('submit', (e) => {
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
+		}, 8000);
 
 		document.querySelectorAll('.form-control-correcto').forEach((icono) => {
 			icono.classList.remove('form-control-correcto');
@@ -102,12 +104,45 @@ function calcularCuota(meses,monto) {
 
 
 function cargarDatos(prestamo){
+    let fecha;
+    let cuota;
+    let mes = {fecha,cuota};
+    let mesesarray=[];
+    let DateTime = luxon.DateTime;
+    const dt = DateTime.now();
+    console.log(dt.toISODate(DateTime.DATETIME_SHORT)); //=> '2022-07-07')
+
     prestamo.tipo = validarButton();
     if (isNaN(prestamo.nombre)&& (prestamo.monto>0) && (prestamo.plazo>0) && isNaN(prestamo.email) && isNaN(prestamo.tipo)){
         localStorage.setItem('bienvenida',`Bienvenid@ ${prestamo.nombre}!`);
         const bienvenida = localStorage.getItem('bienvenida');
         listado.textContent =  `${bienvenida} Elegiste Prestamo ${prestamo.tipo} por $${prestamo.monto}, ${prestamo.plazo} cuotas de  $${prestamo.cuota}. 
         Total a devolver. $${prestamo.total}`;
+
+        const fechas = document.getElementById("fechas");
+        let meses= {month: 1};
+        
+        let suma = dt.plus(meses); 
+        console.log(suma.toISODate(DateTime.DATETIME_SHORT));
+        
+        for (let i = 1; i < prestamo.plazo; i++) {
+            meses= {month: i};
+            //console.log(`se vienen meses month:i-meses-`)
+            //console.log(meses);
+            //console.log(`se viene dt.plus(meses):-fecha-`)
+            fecha=dt.plus(meses);
+            //console.log(fecha);
+            //console.log(`viene mes.fecha`)
+            mes.fecha= fecha.toISODate(DateTime.DATETIME_SHORT);
+            mes.cuota=prestamo.cuota;
+            //console.log(mes.fecha);
+            //console.log(`se viene mes`);
+            //console.log(mes);
+            mesesarray.push(mes);
+            console.log (`Fecha: ${mesesarray[i]} `);
+        } 
+        fechas.textContent =  ` ${mesesarray}`;
+
         document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
         setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -133,23 +168,7 @@ class PrestamoClass {
 }
 
 }
-
-const prestamo = new PrestamoClass();
-console.log(titulo.innerHTML); //queda como un unico elemento
-titulo.innerHTML="Detalle del Prestamo";
-
-
-//accediendo al DOM por Clase
-const cards = document.getElementsByClassName('itemCard'); 
-//recorro el array de cards
-for (const card of cards) {
-    console.log(card);
-    //producto.innerHTML('Hola'); //esto queda como un array de 3 hola
-
-
-}
 //option button --------------------------------------
-
 function validarButton(){
     let elementoActivo = document.querySelector('input[name="status"]:checked');
     if(elementoActivo) {
@@ -169,6 +188,56 @@ function setRadio(name, value) {
 
 //---------------------------------------------
 
+
+const prestamo = new PrestamoClass();
+console.log(titulo.innerHTML); //queda como un unico elemento
+titulo.innerHTML="Detalle del Prestamo";
+
+const logout = document.querySelector('#logout');
+
+logout.onclick = () => {
+    localStorage.clear();
+    localStorage.removeItem('bienvenida');
+    listado.textContent = "";
+
+}
 console.log(prestamo);
 
+//==============librerai Luxon ============
 
+
+
+
+//console.log( dt.toLocaleString(DateTime.DATETIME_SHORT) );
+
+//let DateTime = luxon.DateTime;
+//const dt = DateTime.now();
+//console.log (dt);
+//console.log(dt.toISODate(DateTime.DATETIME_SHORT)); //=> '2022-07-07')
+//let fecha = dt.toISODate(DateTime.DATETIME_SHORT);
+
+//console.log(dt.localeString(DateTime));
+
+
+// 25/1/2022 14:21
+/*
+const ejercicio = {hours: 1, minutes: 15};
+const estudio = {hours: 2, minutes: 30};
+
+console.log()
+
+const suma = dt.plus(ejercicio).plus(estudio);
+
+console.log(suma.toLocaleString(DateTime.DATETIME_SHORT));
+
+console.log(suma.hour - dt.hour);
+console.log(suma.minute - dt.minute);
+
+if (dt.hour < 12) {
+  console.log('Buenos dÃ­as');
+} else if (dt.hour > 12 && dt.hour < 19) {
+  console.log('Buenas tardes');
+} else {
+  console.log('Buenas noches');
+}
+*/
