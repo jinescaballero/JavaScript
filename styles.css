@@ -23,6 +23,25 @@
     border: 2px solid  #dcdce1;
 }
 
+#detalle {
+	padding-top:1%;
+	font-family: Poppins;
+	background:#cbccf5;
+	color:rgb(35, 23, 48);
+	text-align: center;
+    border: 2px solid  #dcdce1;
+	font-size: 130%;
+}
+
+#contenedorTabla h3{
+	font-family: Poppins;
+	background:#cbccf5;
+	color:rgb(35, 23, 48);
+	text-align: center;
+    border: 2px solid  #dcdce1;
+	line-height:90% !important;
+    text-align: center;
+}
 
 .formulario__validacion-estado {
 	position: absolute;

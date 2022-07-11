@@ -1,7 +1,8 @@
 
 const formulario = document.querySelector("#formulario");
 const inputs = document.querySelectorAll('#formulario input');
-
+let detalle =document.getElementById("#detalle");
+let mesesarray=[];
 
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -40,18 +41,10 @@ const validarCampo = (expresion, input, campo) => {
 	if(expresion.test(input.value)){
 		document.getElementById(`${campo}`).classList.remove('form-control-incorrecto');
 		document.getElementById(`${campo}`).classList.add('form-control-correcto');
-		/*document.querySelector(`#${campo} i`).classList.add('fa-check-circle');
-		document.querySelector(`#${campo} i`).classList.remove('fa-times-circle');
-		document.querySelector(`#${campo} .form-control-error`).classList.remove('form-control-error-activo');
-        */
 		prestamo[campo] = true;
 	} else {
 		document.getElementById(`${campo}`).classList.add('form-control-incorrecto');
 		document.getElementById(`${campo}`).classList.remove('form-control-correcto');
-		/*document.querySelector(`#${campo} i`).classList.add('fa-times-circle');
-		document.querySelector(`#${campo} i`).classList.remove('fa-check-circle');
-		document.querySelector(`#${campo} .form-control-error`).classList.add('form-control-error-activo');
-        */
 		prestamo[campo] = false;
 	}
 }
@@ -59,20 +52,17 @@ const validarCampo = (expresion, input, campo) => {
 inputs.forEach((input) => {
     input.addEventListener('keyup',validarFormulario);
     input.addEventListener('blur',validarFormulario);
-
     });
 
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-
 	if( prestamo.nombre && prestamo.email && prestamo.monto &&  prestamo.plazo && prestamo.tipo){
 		formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
 		}, 8000);
-
 		document.querySelectorAll('.form-control-correcto').forEach((icono) => {
 			icono.classList.remove('form-control-correcto');
 		});
@@ -102,52 +92,72 @@ function calcularCuota(meses,monto) {
 }
 }
 
-function unMes(fecha,cuota){
-    this.fecha=fecha;
-    this.cuota   = cuota;
-}
-
 
 function cargarDatos(prestamo){
-    let fecha;
-    let mesesarray=[];
-    let DateTime = luxon.DateTime;
-    const dt = DateTime.now();
-    let fecha_parseada;
-
-
+    
     prestamo.tipo = validarButton();
     if (isNaN(prestamo.nombre)&& (prestamo.monto>0) && (prestamo.plazo>0) && isNaN(prestamo.email) && isNaN(prestamo.tipo)){
         localStorage.setItem('bienvenida',`Bienvenid@ ${prestamo.nombre}!`);
         const bienvenida = localStorage.getItem('bienvenida');
         listado.textContent =  `${bienvenida} Elegiste Prestamo ${prestamo.tipo} por $${prestamo.monto}. El plazo para devolver es: ${prestamo.plazo}. 
         Total a devolver. $${prestamo.total}`;
-        let fechas = document.getElementById("fechas");
-
-        for (let i = 1; i <= prestamo.plazo; i++) {
-            meses= {month: i};
-            let suma = dt.plus(meses); 
-            fecha_parseada= suma.toISODate(DateTime.DATETIME_SHORT);
-            cuota=prestamo.cuota;
-            let mes = new unMes(fecha_parseada, cuota);
-            console.log(mes);
-            mesesarray.push(mes);
-        } 
-        //console.log (`Fecha: ${mesesarray} `);
-        
-
-        fechas.textContent =  `Primer cuota vence: ${mesesarray[0].fecha}  Valor cuota: $${mesesarray[0].cuota}`; 
-
-        document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
-        setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-
-		}, 8000);
+        informarFechas();
+        btn.onclick = () => {
+            generarTabla();
+        }
     } 
     
     console.log(prestamo);
 
-}   
+}
+
+function generarTabla(){
+    let numFilas= prestamo.plazo; //document.getElementById("plazo").value;
+    console.log(numFilas);
+    let contenedorTabla = document.getElementById("contenedorTabla");
+    contenedorTabla.innerHTML="";
+    let tabla = "<table>";
+    tabla += "<td><h3>Monto</h3></td>";
+    tabla += "<td><h3>Plazo</h3></td>";
+    tabla += "<td><h3>Cuota</h3></td>";
+    tabla += "<td><h3> Tipo </h3></td>";
+    tabla += "<td><h3> Monto a Devolver</h3></td>";
+    tabla += "<tr>";
+    tabla += `<td><h3>$${prestamo.monto}</h3></td>`;
+    tabla += `<td><h3>${prestamo.plazo}</h3></td>`;
+    tabla += `<td><h3>$${prestamo.cuota}</h3></td>`;
+    tabla += `<td><h3>${prestamo.tipo} </h3></td>`;
+    tabla += `<td><h3>$${prestamo.total} </h3></td>`;
+    tabla += "</tr>"; 
+    tabla += "<tr>";
+    
+    for (let f=0; f <numFilas; f++){
+        tabla += `<td><h3>Cuota ${f+1}:</h3></td>`;
+        tabla += `<td><h3>${mesesarray[f]}</h3></td>`; 
+        tabla += "</tr>";
+    }
+    tabla +="</table>";
+    contenedorTabla.innerHTML=tabla;
+}
+
+function informarFechas(){
+    //let fecha;
+    let DateTime = luxon.DateTime;
+    const dt = DateTime.now();
+    let fecha_parseada;
+    for (let i = 1; i <= prestamo.plazo; i++) {
+        meses= {month: i};
+        let suma = dt.plus(meses); 
+        fecha_parseada= suma.toISODate(DateTime.DATETIME_SHORT);
+        //cuota=prestamo.cuota;
+        mesesarray.push(fecha_parseada);
+    } 
+    
+    document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+    setTimeout(() => {
+        document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
+    }, 8000);
+}
 
 
 class PrestamoClass {
@@ -185,8 +195,8 @@ function setRadio(name, value) {
 
 
 const prestamo = new PrestamoClass();
-console.log(titulo.innerHTML); //queda como un unico elemento
-titulo.innerHTML="Detalle del Prestamo";
+//console.log(titulo.innerHTML); //queda como un unico elemento
+//titulo.innerHTML="Detalle del Prestamo";
 
 const logout = document.querySelector('#logout');
 
