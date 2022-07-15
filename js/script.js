@@ -1,7 +1,9 @@
 
+// Declaraciones
 const formulario = document.querySelector("#formulario");
 const inputs = document.querySelectorAll('#formulario input');
 let detalle =document.getElementById("#detalle");
+const logout = document.querySelector('#logout');
 let mesesarray=[];
 
 const expresiones = {
@@ -85,9 +87,6 @@ function calcularCuota(meses,monto) {
         case  meses==24:
             return Math.round( monto * 1.84/24);
         break;
-        case  meses==36:
-            return Match.round( monto * 2.33 /36);
-        break;
     
 }
 }
@@ -99,21 +98,18 @@ function cargarDatos(prestamo){
     if (isNaN(prestamo.nombre)&& (prestamo.monto>0) && (prestamo.plazo>0) && isNaN(prestamo.email) && isNaN(prestamo.tipo)){
         localStorage.setItem('bienvenida',`Bienvenid@ ${prestamo.nombre}!`);
         const bienvenida = localStorage.getItem('bienvenida');
-        listado.textContent =  `${bienvenida} Elegiste Prestamo ${prestamo.tipo} por $${prestamo.monto}. El plazo para devolver es: ${prestamo.plazo}. 
-        Total a devolver. $${prestamo.total}`;
         informarFechas();
+        listado.innerHTML=`${bienvenida} Cronograma del Prestamo`;
         btn.onclick = () => {
-            generarTabla();
+            generarTabla();   
         }
     } 
     
-    console.log(prestamo);
 
 }
 
 function generarTabla(){
-    let numFilas= prestamo.plazo; //document.getElementById("plazo").value;
-    console.log(numFilas);
+    let numFilas= prestamo.plazo; 
     let contenedorTabla = document.getElementById("contenedorTabla");
     contenedorTabla.innerHTML="";
     let tabla = "<table>";
@@ -140,16 +136,17 @@ function generarTabla(){
     contenedorTabla.innerHTML=tabla;
 }
 
+
+//==============Funcion con libreria Luxon ============
+
 function informarFechas(){
-    //let fecha;
     let DateTime = luxon.DateTime;
-    const dt = DateTime.now();
     let fecha_parseada;
+    const dt = DateTime.now();
     for (let i = 1; i <= prestamo.plazo; i++) {
         meses= {month: i};
         let suma = dt.plus(meses); 
         fecha_parseada= suma.toISODate(DateTime.DATETIME_SHORT);
-        //cuota=prestamo.cuota;
         mesesarray.push(fecha_parseada);
     } 
     
@@ -173,7 +170,7 @@ class PrestamoClass {
 }
 
 }
-//option button --------------------------------------
+//----------option button ------------------------------
 function validarButton(){
     let elementoActivo = document.querySelector('input[name="status"]:checked');
     if(elementoActivo) {
@@ -190,22 +187,14 @@ function setRadio(name, value) {
     });
 }
 
-
-//---------------------------------------------
-
-
+//-----------------fin option button----------------------------
 const prestamo = new PrestamoClass();
-//console.log(titulo.innerHTML); //queda como un unico elemento
-//titulo.innerHTML="Detalle del Prestamo";
-
-const logout = document.querySelector('#logout');
-
 logout.onclick = () => {
     localStorage.clear();
     localStorage.removeItem('bienvenida');
     listado.textContent = "";
 
 }
-console.log(prestamo);
 
-//==============librerai Luxon ============
+
+

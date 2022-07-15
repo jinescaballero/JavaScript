@@ -15,115 +15,78 @@
 </head>
 <body>
     <div id="titulo"> Simulador de Prestamos </div>
-
-
-<section>
-    <div class="copyContainerini">
-    <p style="font-size:22px;text-align:center;"> Sabemos cómo ayudarte, por eso tenemos préstamos para lo que necesites.<br>
-    <br>
-    <strong> Busquemos la mejor opción.</strong></p>
-    </div>
-    
-    <div class="container">
-        <div class="cardGrid noCopy">
-<!-----------------------------FORM-------------------------------->
-            <div class="row"> 
-                <div class="form-group">
-                    <span class="col-md-6 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                    <form id="formulario" class="p-5 mt-3 shadow border">
-                        <div class="col-md-12 ">
-                            <div   name="nombre" type="text" >
-                                <input id="nombre" class="form-control"  placeholder="Nombre " > 
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                <p class="form-control-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p> <br>                            
-                            </div>
-                            <div   name="monto" type="number" >
-                                <input id="monto" class="form-control"  placeholder=" Monto " > 
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i> <br>
-                            </div>
-                            
-                            <select id="plazo" type="number" name="plazo" placeholder="Plazo "class="form-control"> 
-                                <script type="text/javascript"> 
-                                    document.write("<option>" + "Seleccione Plazo" + "</option>" );
-                                    document.write("<option>" + 3 + "</option>" );
-                                    document.write("<option>" + 6 + "</option>" );
-                                    document.write("<option>" + 12 + "</option>" );
-                                    document.write("<option>" + 24 + "</option>" );
-                                    document.write("<option>" + 36 + "</option>" );
-                                </script>   
-                            </select>  <br>
-                            <div  name="email"  type="text" >
-                                <input  id="email" class="form-control" placeholder="Email:John@correo.com " > 
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i> <br>
-                            </div>
-                            <p class="form-control-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
-                            <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
-                            <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
-                            <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
-                            </p> 
-                            
-                            <div class="formulario__mensaje" id="formulario__mensaje">
-                                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
-                            </div> <br>
-                            <div class="form-control-btn-enviar">
+    <section>
+        <div class="copyContainerini">
+            <p style="font-size:22px;text-align:center;"> Sabemos cómo ayudarte, por eso tenemos préstamos para lo que necesites.<br>
+            <br>
+            <strong> Busquemos la mejor opción.</strong></p>
+        </div>
+        
+        <div class="container">
+            <div class="cardGrid noCopy">
+    <!-----------------------------FORM-------------------------------->
+                <div class="row"> 
+                    <div class="form-group">
+                        <span class="col-md-6 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <form id="formulario" class="p-5 mt-3 shadow border">
+                            <div class="col-md-12 ">
+                                <div   name="nombre" type="text" >
+                                    <input id="nombre" class="form-control"  placeholder="Nombre " > 
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    <p class="form-control-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p> <br>                            
+                                </div>
+                                <div   name="monto" type="number" >
+                                    <input id="monto" class="form-control"  placeholder=" Monto " > 
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i> <br>
+                                </div>
+                                
+                                <select id="plazo" type="number" name="plazo" placeholder="Plazo "class="form-control"> 
+                                    <script type="text/javascript"> 
+                                        document.write("<option>" + "Seleccione Plazo" + "</option>" );
+                                        document.write("<option>" + 3 + "</option>" );
+                                        document.write("<option>" + 6 + "</option>" );
+                                        document.write("<option>" + 12 + "</option>" );
+                                        document.write("<option>" + 24 + "</option>" );
+                                    </script>   
+                                </select>  <br>
+                                <div  name="email"  type="text" >
+                                    <input  id="email" class="form-control" placeholder="Email:John@correo.com " > 
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i> <br>
+                                </div>
+                                <p class="form-control-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                                <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
+                                <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
+                                <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
+                                </p> 
+                                
+                                <div class="formulario__mensaje" id="formulario__mensaje">
+                                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                                </div> <br>
+                                <div class="form-control-btn-enviar">
                                     <button id="btn" type="submit" class="formulario__btn" >Simular Prestamo</button>
                                     <button id="logout" type="submit" class="formulario__btn">Logout</button>
                                     <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
                                     <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Logout enviado exitosamente!</p>
-                            </div>
-                            
-                        </div> <br>
-                    </form>
-                </div><br> 
-            </div>
-
-<!------------------------------------------------------------>
-        </form> <br>
-            <h3 id="listado"> </h3> <br>
-            <h3 id="fechas"></h3> <br>
-            <div id=" detalle" >   </div> 
-            <div id="contenedorTabla">
-            </div>
-            <div class="row">
-                <div class="col-1 col-lg-6">
-                    <article class="itemCard ">
-                        <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-7.png"></div>
-                        <h3>Préstamo&nbsp;Personal</h3>
-                        <p><strong>Préstamos hasta $2.000.000. </strong><br> <br>
-                        Simulá el tuyo en Online Banking y si te interesa, pedilo 100% online.&nbsp;</p>
-                        <a href="./prestamo.html" aria-label="Conocer más sobre préstamos personales" class="btn btn-outline">Conocer&nbsp;más</a>
-                    </article>
-                </div> 
-                <div class="col-1 col-md-6 col-lg-6">
-                    <article class="itemCard">
-                        <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-8.png"></div>
-                        <h3>Adelanto de sueldo</h3>
-                        <p>¿Te surgió un gasto inesperado para pagar? ¿Necesitás un poco de plata y te faltan varios días para cobrar?<br><br>
-                        <strong>Te prestamos hasta el 50% de tu sueldo. </strong></p>
-                        <a href="./prestamo.html" aria-label="Conocer más sobre adelanto de sueldo" class="btn btn-outline">Conocer&nbsp;más</a>
-                    </article>
-                </div>   
-            </div>
-            <div class="row">    
-                <div class="col-1 col-md-6 col-lg-6">
-                    <article class="itemCard">
-                        <div class="icoBox d-flex align-items-center justify-content-center"><img alt="" src="./image/ico-emi-9.png"></div>
-                        <h3>Préstamo Express</h3>
-                        <p>Es "express" porque lo <strong>pedís rápido y lo devolvés rápido.</strong><br><br>
-                        Te prestamos hasta<strong> $75.000</strong> y lo podés devolver hasta en <strong>45 días.&nbsp;</strong></p>
-                        <a href="./prestamo.html" aria-label="Conocer más sobre préstamo express" class="btn btn-outline">Conocer&nbsp;más</a>
-                    </article>
+                                </div>
+                                
+                            </div> 
+                        </form> <br>
+                    </div><br> 
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!------------------------->
+    <!----------------------------------------------------------->
+                <h3 id="listado">  </h3> 
+                <div id="detalle" > <h3></h3>  </div> 
+                <div id="contenedorTabla">  </div>
+                <div id="valores">  </div> 
 
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>    
-<script type="text/javascript" src="./js/script.js"></script>
-<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>    
+        <script type="text/javascript" src="./js/script.js"></script>
+        <script type="text/javascript" src="./ajax.js"></script>
+        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+</body> 
 </html>
