@@ -3,8 +3,8 @@
     "results":[{"name":"Dolar Blue",
         "url":"./image/dolar1","compra": 284,"venta":289},
         {"name":"Dolar Oficial","url":"./image/dolar2","compra": 127.06,"venta":134.98},
-        {"name":"Dolar Cripto","url":"./image/dolar3","compra":222.75,"venta":222.75},
-        {"name":"Dolar Bolsa","url":"./image/dolar4","compra":275,"venta":291},
+        {"name":"Dolar Cripto","url":"./image/dolar3","compra":277,"venta":293},
+        {"name":"Dolar Bolsa","url":"./image/dolar4","compra":283.63,"venta":284.14},
         {"name":"Dolar Solidario","url":"./image/dolar5","compra":222.75,"venta":222.75}
         
 ]}
