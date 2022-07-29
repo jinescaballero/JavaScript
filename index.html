@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=dev"ice-width, initial-scale="1.0">
-    <!-- Bootstrap-->
+    <!-- Bootstrap para el form-->
     <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="./image/logo_money.png">
@@ -22,8 +22,6 @@
             <div class="cardGrid noCopy">
     <!-----------------------------FORM-------------------------------->
                 <div class="row"> 
-                    <!-----<div class="form-group"> ---->
-                        <!--<span class="col-md-6 col-md-offset-2 text-center"></span>-->
                     <form action="" id="formulario" class="formulario p-5 mt-3 shadow border">
                         <div class="col-md-12 ">
                             <div class="formulario__grupo"  id="grupo__nombre" > 
@@ -31,7 +29,7 @@
                                     <input id="nombre" class="formulario__input " type="text" placeholder="Nombre " > 
                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>                           
                                 </div>
-                                <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p> <br> 
+                                <p class="formulario__input-error">El usuario tiene que ser de 3 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p> <br> 
                             </div>
                             
                             <div class="formulario__grupo" id="grupo__monto" > 
@@ -40,8 +38,7 @@
                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>                           
                                 </div>
                                 <p class="formulario__input-error">El monto tiene que ser mayor o igual a 1000 y meor a 2.000.000.</p> <br> 
-                            </div>
-                                
+                            </div>  
                             <div class="formulario__grupo" id="grupo__plazo" > 
                                 <div class="formulario__grupo-input" id="grupo__plazo" >
                                     <select  id="plazo" type="number" name="plazo" placeholder="Plazo "> 
@@ -57,8 +54,6 @@
                                 </div>
                                 <p class="formulario__input-error"> Debe seleccionar el plazo 3,6,12 ó 24 cuotas.</p> <br> 
                             </div>
-
-
                             <div class="formulario__grupo" id="grupo__email" > 
                                 <div  class="formulario__grupo-input" id="grupo__email">
                                     <input id="email" class="formulario__input" type="email" placeholder="Email:John@correo.com " > 
@@ -66,7 +61,6 @@
                                 </div>
                                 <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p> <br> 
                             </div>
-
                                 <input  type="radio" name="status" value="Personal" id="personal "> <label for="personal">Prestamo Personal </label> 
                                 <input type="radio" name="status" value="Adelanto" id="adelanto"> <label for="adelanto"> Adelanto de Sueldo </label> 
                                 <input type="radio" name="status" value="Express" id="express"> <label for="express"> Prestamo Express </label>  <br> <br>
@@ -84,7 +78,6 @@
                             
                         </div> 
                     </form> <br>
-                        <!--</div><br> ---> 
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ const logout = document.querySelector('#logout');
 let mesesarray=[];
 
 const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{3,16}$/, // Letras y espacios, pueden llevar acentos.
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	monto: /^\d{4,7}$/ ,// 4 a 7 numeros.
     plazo:/^\d{1,2}$/
@@ -21,7 +21,6 @@ const validarFormulario = (e) => {
     prestamo.email = document.querySelector("#email").value;
     prestamo.cuota = calcularCuota(prestamo.plazo, prestamo.monto);
     prestamo.total= prestamo.cuota * prestamo.plazo;
-    const listado = document.getElementById("listado");
     cargarDatos(prestamo);
 	switch (e.target.id) {
 		case "nombre":
@@ -65,6 +64,7 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
+    const listado = document.getElementById("listado");
 	if( prestamo.nombre && prestamo.email && prestamo.monto &&  prestamo.plazo && prestamo.tipo){
 		formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
@@ -99,9 +99,8 @@ function calcularCuota(meses,monto) {
 
 
 function cargarDatos(prestamo){
-    
     prestamo.tipo = validarButton();
-    if (isNaN(prestamo.nombre)&& (prestamo.monto>0) && (prestamo.plazo>0) && isNaN(prestamo.email) && isNaN(prestamo.tipo)){
+    if (isNaN(prestamo.nombre)&& (prestamo.monto>999) && (prestamo.plazo>0) && isNaN(prestamo.email) && isNaN(prestamo.tipo)){
         localStorage.setItem('bienvenida',`Bienvenid@ ${prestamo.nombre}!`);
         const bienvenida = localStorage.getItem('bienvenida');
         informarFechas();
